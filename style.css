@@ -4,6 +4,9 @@
     margin: auto;
 }
 
+body {
+    background-color: rgba(137, 233, 224, 0.468);
+}
 
 .pocket {
     display: inline-block;
@@ -12,4 +15,17 @@
     background-color: burlywood;
     border-radius: 50%;
     cursor: pointer;
+}
+
+h1 {
+    text-align: left;
+    font-size: 45px;
+}
+
+span {
+    color: rgb(255, 6, 6);
+}
+
+h2 {
+    line-height: normal;
 }
