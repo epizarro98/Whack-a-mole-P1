@@ -27,17 +27,18 @@
         const start = document.querySelector('.start')
         const timer = document.querySelector('.timer')
         timerLeft = 30
+        i = 0
         //countdown function
         const countdown = () => {
             setInterval(() => {
-            if(timerLeft <= 0){
-                clearInterval(timerLeft = 0)
-            }
+                if(timerLeft <= 0){
+                    clearInterval(timerLeft = 0)
+                }
                 timer.innerHTML = 'Timer: ' + timerLeft
                 timerLeft -=1
             }, 1000);
         }
-
+        
         
         const timeout = () => {
             turnRed(getRandomDiv())
@@ -49,16 +50,23 @@
             return document.getElementById(randNum)
             //to get image set background image? try it
         }
-
+        
         //not every 3 secs but after 3 secs; 1 at a time
         //div parameter is.....(answer here: )
         const turnRed = (div) => {
             div.style.backgroundImage = "url('./Assets/mole.jpg')";
             div.style.backgroundPosition = 'center'
             div.style.backgroundSize = 'cover'
-            setTimeout(turnBurlywood, 500, div)
+            setTimeout(turnBurlywood, 1000, div)
         }
+
+        //attempting to get whacks up by 1
+        // let i = 0
+        // const buttonClick = () => {
+        //     document.querySelector('clicks').value = ++1
+        // }
         //conditional to see if image is there, then count++
+
         //randnum=1-8 divs, keeping track using randNum
         //
         const turnBurlywood = (div) => {
@@ -70,8 +78,19 @@
         // timeout()
         start.addEventListener('click', timeout)
         start.addEventListener('click', countdown)
+        // clicks.addEventListener('click', () => {
+        // document.querySelector('.clicks').value = ++i
+        // }).innerHTML = i
         
+        setTimeout(() => {
+        document.getElementById('surprise--mole').style.display = 'block';
+        }, 2000);
+
+        setTimeout(() => {
+            document.getElementById('surprise--mole').style.display = 'none';
+            }, 3000);
     })
+    
     // setTimeout((getBack2(colorChange)), 1000)
     // setTimeout(getBack, 3000, randNum)
     // debugger

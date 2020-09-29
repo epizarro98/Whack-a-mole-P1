@@ -1,7 +1,8 @@
+
 .container{
     width: 600px;
     height: 600px;
-    margin: auto;
+    margin-left: 682px;
 }
 
 body {
@@ -18,11 +19,50 @@ body {
 }
 
 h1 {
-    text-align: left;
+    margin-left: 65px;
     font-size: 45px;
+    font-family: Chalkduster, fantasy
 }
 
 span {
     color: rgb(255, 6, 6);
 }
 
+section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.clicks {
+    position: absolute;
+    left: 450px;
+    top: 230px;
+}
+
+.timer {
+    position: absolute;
+    left: 450px;
+    top: 300px;
+    font-size: 30px;
+}
+
+#start--game {
+    position: absolute;
+    left: 450px;
+    top: 390px;
+}
+
+.reset {
+    position: absolute;
+    left: 450px;
+    top: 450px;
+}
+
+#surprise--mole {
+    width: 400px;
+    height: 400px;
+    background-position: center;
+    opacity: 0.75;
+    position: absolute;
+    margin-top: 200px;
+}
