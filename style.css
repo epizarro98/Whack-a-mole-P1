@@ -1,13 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap'); */
 .container{
     width: 600px;
     height: 600px;
     margin-left: 682px;
     position: absolute;
+    margin-top: 80px;
 }
 
 body {
-    background-color: rgba(137, 233, 224, 0.468);
+    /* background-color: rgba(137, 233, 224, 0.468); */
+    background-image: url('https://3.bp.blogspot.com/-DvN121pyk50/T6VyPTk7WuI/AAAAAAAAAoc/6-1XVTZGjiU/s1600/grass_dif2.jpg');
 }
 
 .pocket {
@@ -22,11 +25,11 @@ body {
 h1 {
     margin-left: 65px;
     font-size: 45px;
-    font-family: Chalkduster, fantasy
+    font-family: Chalkduster, fantasy 
 }
 
 span {
-    color: rgb(255, 6, 6);
+    color: rgb(249, 0, 0);
 }
 
 section {
@@ -40,12 +43,9 @@ section {
     top: 230px;
     font-size: 35px;
     font-weight: bolder;
-    font-family: 'Bangers', cursive;
-    color: rgba(220, 46, 15, 0.755);
+    font-family: 'Architects Daughter', cursive;
+    color: rgb(250, 43, 7);
   }
-  .third:hover {
-    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
-}
 
 .timer {
     position: absolute;
@@ -53,24 +53,48 @@ section {
     top: 312px;
     font-size: 35px;
     font-weight: bolder;
-    font-family: 'Bangers', cursive;
-    color: rgba(220, 46, 15, 0.755);
+    font-family: 'Architects Daughter', cursive;
+    color: rgb(255, 0, 0);
 }
 
 #start--game {
     position: absolute;
-    left: 450px;
-    top: 400px;
-    border-color: #3498db;
-    color: #fff;
-    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
+    left: 430px;
+    top: 376px;
+}
+
+.style--button {
+    cursor: pointer;
+    border: none;
+    margin: 20px;
+    padding: 15px;
+    width: 147px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    font-weight: 1100;background-image: linear-gradient(to left, #11ede9, #63f234);
+}
+
+.style--reset{
+    background-image: linear-gradient(to left, #11ede9, #63f234);
+    cursor: pointer;
+    border: none;
+    margin: 20px;
+    padding: 15px;
+    width: 147px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.755);
+    font-weight: 1100;
 }
 
 .reset {
     position: absolute;
-    left: 450px;
+    left: 431px;
     top: 482px;
 }
 
@@ -81,4 +105,8 @@ section {
     opacity: 0.75;
     position: absolute;
     margin-top: 200px;
+}
+
+.start {
+    color: rgb(159, 244, 106);
 }

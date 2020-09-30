@@ -100,7 +100,6 @@
 
         }
         
-        
         // event listeners
         start.addEventListener('click', (event) =>{
             timeout(event)
