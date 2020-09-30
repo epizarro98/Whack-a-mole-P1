@@ -22,12 +22,18 @@
     //     debugger
     //     document.getElementById(colorChange.toString()).style.backgroundColor = 'red'
     // }
-    
-    document.addEventListener('DOMContentLoaded', () => {
+    const start = () => {
+
         const start = document.querySelector('.start')
         const timer = document.querySelector('.timer')
+        const reset = document.querySelector('.reset')
+        let clicks = document.querySelectorAll('.pocket')//turns into an array; use for loop to iterate through the array
         timerLeft = 30
-        i = 0
+        let whacks = 0
+        let whackIncrm = document.querySelector('.whacked')
+        whackIncrm.innerHTML = ` ${whacks}`
+
+
         //countdown function
         const countdown = () => {
             setInterval(() => {
@@ -38,34 +44,39 @@
                 timerLeft -=1
             }, 1000);
         }
-        
-        
+
+
         const timeout = () => {
             turnRed(getRandomDiv())
         }
-        
+
         //turnRed is the the function th
         const getRandomDiv = () => {
             let randNum = (Math.floor(Math.random() * 9)).toString() 
             return document.getElementById(randNum)
             //to get image set background image? try it
         }
-        
+
         //not every 3 secs but after 3 secs; 1 at a time
         //div parameter is.....(answer here: )
         const turnRed = (div) => {
-            div.style.backgroundImage = "url('./Assets/mole.jpg')";
+            div.style.backgroundImage = "url('./Assets/new-mole3.jpg')";
             div.style.backgroundPosition = 'center'
             div.style.backgroundSize = 'cover'
             setTimeout(turnBurlywood, 1000, div)
         }
 
         //attempting to get whacks up by 1
-        // let i = 0
-        // const buttonClick = () => {
-        //     document.querySelector('clicks').value = ++1
-        // }
+        const trackClicks = (event) => {
+
+             if(event.target.style[4] === 'background-image'){
+                 whacks++
+                 whackIncrm.innerHTML = ` ${whacks}`
+             }
+            //console.log(event.target.style[4])
+        }
         //conditional to see if image is there, then count++
+
 
         //randnum=1-8 divs, keeping track using randNum
         //
@@ -74,57 +85,73 @@
             div.style.backgroundColor ='burlywood'
             timeout()
         }
+
         
-        // timeout()
-        start.addEventListener('click', timeout)
-        start.addEventListener('click', countdown)
-        // clicks.addEventListener('click', () => {
-        // document.querySelector('.clicks').value = ++i
-        // }).innerHTML = i
+        const resetButton = () => {
+            // clearInterval(timerLeft = 0)
+            // div.style.backgroundColor = 'burlywood
+            //whacks = 0
+            // timerLeft = 30
+            // console.log(whacks)
+            timerLeft = 30
+            whacks = 0
+            whackIncrm = document.querySelector('.whacked')
+            whackIncrm.innerHTML = ` ${whacks}` 
+
+        }
         
-        setTimeout(() => {
-        document.getElementById('surprise--mole').style.display = 'block';
-        }, 2000);
-
-        setTimeout(() => {
-            document.getElementById('surprise--mole').style.display = 'none';
-            }, 3000);
-    })
+        
+        // event listeners
+        start.addEventListener('click', (event) =>{
+            timeout(event)
+            countdown(event)
+            start.style.display = 'none'//look up docs
+            //console.log(start)
+        })
+        clicks.forEach(each => each.addEventListener('click', trackClicks))
+        reset.addEventListener('click', resetButton)
+    }
     
-    // setTimeout((getBack2(colorChange)), 1000)
-    // setTimeout(getBack, 3000, randNum)
-    // debugger
-    // count++
+    start()  
+
+
+    //mole randomly appearing
+    // setTimeout(() => {
+    // document.getElementById('surprise--mole').style.display = 'block';
+    // }, 2000);
+
+    // setTimeout(() => {
+    //     document.getElementById('surprise--mole').style.display = 'none';
+    //     }, 3000);
+    
+
+
+
+
     
     
     
-
-
-
-//let start = document.querySelector('.start').addEventListener('click', changeColor())
-//let pocket = document.getElementById('2').addEventListener('click', pocketClick)
     
-
-
-
-
-
-
-
-
-//=============================================================
-//This was me attempting to get my divs to randomly get a color
-//=============================================================
-// const changeColor = () => {
-//     let newColor = makeColor()
-//     let circles = document.getElementsByClassName('.pocket')
-//     // document.getElementsByClassName('.rgb').innerHTML = newColor
-// }
-
-// const makeColor = () => {
-//     let arr = []
-//     for(let i = 0; i < 9; i++){
-//         let num = Math.floor(Math.random() * 8)
-//         arr.push(num)
-//     }
-// }
+    
+    
+    
+    
+    //=============================================================
+    //This was me attempting to get my divs to randomly get a color
+    //=============================================================
+    // const changeColor = () => {
+        //     let newColor = makeColor()
+        //     let circles = document.getElementsByClassName('.pocket')
+        //     // document.getElementsByClassName('.rgb').innerHTML = newColor
+        // }
+        
+        // const makeColor = () => {
+            //     let arr = []
+            //     for(let i = 0; i < 9; i++){
+                //         let num = Math.floor(Math.random() * 8)
+                //         arr.push(num)
+                //     }
+                // }
+                //let start = document.querySelector('.start').addEventListener('click', changeColor())
+                //let pocket = document.getElementById('2').addEventListener('click', pocketClick)
+                
