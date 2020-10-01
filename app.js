@@ -28,7 +28,7 @@
         const timer = document.querySelector('.timer')
         const reset = document.querySelector('.reset')
         let clicks = document.querySelectorAll('.pocket')//turns into an array; use for loop to iterate through the array
-        timerLeft = 30
+        let timerLeft = 30
         let whacks = 0
         let whackIncrm = document.querySelector('.whacked')
         whackIncrm.innerHTML = ` ${whacks}`
@@ -73,10 +73,16 @@
                  whacks++
                  whackIncrm.innerHTML = ` ${whacks}`
              }
-            //console.log(event.target.style[4])
         }
         //conditional to see if image is there, then count++
 
+
+        const clearBoard = () => {
+            if(timerLeft = 0){
+                
+            }
+            
+        }
 
         //randnum=1-8 divs, keeping track using randNum
         //
@@ -85,7 +91,6 @@
             div.style.backgroundColor ='burlywood'
             timeout()
         }
-
         
         const resetButton = () => {
             // clearInterval(timerLeft = 0)
@@ -93,12 +98,15 @@
             //whacks = 0
             // timerLeft = 30
             // console.log(whacks)
-            timerLeft = 30
-            whacks = 0
-            whackIncrm = document.querySelector('.whacked')
-            whackIncrm.innerHTML = ` ${whacks}` 
-
+            // timerLeft = 30
+            // whacks = 0
+            // whackIncrm = document.querySelector('.whacked')
+            // whackIncrm.innerHTML = ` ${whacks}` 
+            window.location.reload()
         }
+
+
+    
         
         // event listeners
         start.addEventListener('click', (event) =>{
@@ -152,5 +160,4 @@
                 //     }
                 // }
                 //let start = document.querySelector('.start').addEventListener('click', changeColor())
-                //let pocket = document.getElementById('2').addEventListener('click', pocketClick)
-                
+                //let pocket = document.getElementById('2').addEventListener('click', pocketClick

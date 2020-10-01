@@ -11,6 +11,7 @@
 body {
     /* background-color: rgba(137, 233, 224, 0.468); */
     background-image: url('https://3.bp.blogspot.com/-DvN121pyk50/T6VyPTk7WuI/AAAAAAAAAoc/6-1XVTZGjiU/s1600/grass_dif2.jpg');
+    cursor: url('https://webstockreview.net/images/clipart-hammer-hammer-wood-1.jpg');
 }
 
 .pocket {
@@ -59,7 +60,7 @@ section {
 
 #start--game {
     position: absolute;
-    left: 430px;
+    left: 431px;
     top: 376px;
 }
 
@@ -107,6 +108,6 @@ section {
     margin-top: 200px;
 }
 
-.start {
-    color: rgb(159, 244, 106);
+.start1 {
+    color: rgb(202, 237, 181);
 }
