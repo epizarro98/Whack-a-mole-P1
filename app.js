@@ -9,297 +9,146 @@
 //add mole image instead of red dot
 
 
-
-
-
-
-// const start = document.querySelector('.start')
-// const timer = document.querySelector('.timer')
-// const reset = document.querySelector('.reset')
-// let clicks = document.querySelectorAll('.pocket')//turns into an array; use for loop to iterate through the array
-// let timerLeft = 30
-// let whacks = 0
-// let whackIncrm = document.querySelector('.whacked')
-// whackIncrm.innerHTML = ` ${whacks}`
-
-
-// //countdown function
-
-
-// const timeout = () => {
-    //     turnRed(getRandomDiv())
-    // }
-    
-    // //turnRed is the the function th
-    // const getRandomDiv = () => {
-        //     let randNum = (Math.floor(Math.random() * 9)).toString() 
-        //     return document.getElementById(randNum)
-        //     //to get image set background image? try it
-        // }
-        
-        // //not every 3 secs but after 3 secs; 1 at a time
-        // //div parameter is.....(answer here: )
-        // const turnRed = (div) => {
-            //     div.style.backgroundImage = "url('./Assets/new-mole3.jpg')";
-            //     div.style.backgroundPosition = 'center'
-            //     div.style.backgroundSize = 'cover'
-            //     setTimeout(turnBurlywood, 1000, div)
-            // }
-            
-            // //attempting to get whacks up by 1
-            // const trackClicks = (event) => {
-                
-                //     if(event.target.style[4] === 'background-image'){
-                    //         whacks++
-                    //         whackIncrm.innerHTML = ` ${whacks}`
-                    //     }
-                    // }
-                    // //conditional to see if image is there, then count++
-                    
-                    
-                    // const clearBoard = () => {
-                        //     if(timerLeft = 0){
-                            
-                            //     }
-                            
-                            // }
-                            
-                            // //randnum=1-8 divs, keeping track using randNum
-                            // //
-                            // const turnBurlywood = (div) => {
-                                //     div.style.backgroundImage = ''
-                                //     div.style.backgroundColor ='burlywood'
-                                //     timeout()
-                                // }
-                                
-                                // const resetButton = () => {
-                                    //     // clearInterval(timerLeft = 0)
-                                    //     // div.style.backgroundColor = 'burlywood
-                                    //     //whacks = 0
-                                    //     // timerLeft = 30
-                                    //     // console.log(whacks)
-                                    //     // timerLeft = 30
-                                    //     // whacks = 0
-                                    //     // whackIncrm = document.querySelector('.whacked')
-                                    //     // whackIncrm.innerHTML = ` ${whacks}` 
-                                    //     // window.location.reload()
-                                    // }
-                                    
-                                    
-                                    
-                                    
-                                    // // event listeners
-                                    // start.addEventListener('click', (event) =>{
-                                        //     timeout(event)
-                                        //     countdown(event)
-                                        //     start.style.display = 'none'//look up docs
-                                        //     //console.log(start)
-                                        // })
-                                        // clicks.forEach(each => each.addEventListener('click', trackClicks))
-                                        // reset.addEventListener('click', resetButton)
+                                       
                                         
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-        document.addEventListener('DOMContentLoaded', ()=>{
-            const start = document.querySelector('.start')
-            const timer = document.querySelector('.timer')
-            const reset = document.querySelector('.reset')
-            let clicks = document.querySelectorAll('.pocket')//turns into an array; use for loop to iterate through the array
-            let resultsButton = document.querySelector('.results-button')
-            let timerLeft = 30
-            let whacks = 0
-            let whackIncrm = document.querySelector('.whacked')
-            whackIncrm.innerHTML = ` ${whacks}`
+document.addEventListener("DOMContentLoaded", () => {
+  const start = document.querySelector(".start");
+  const timer = document.querySelector(".timer");
+  const reset = document.querySelector(".reset");
+  let clicks = document.querySelectorAll(".pocket"); //turns into an array; use for loop to iterate through the array
+  let resultsButton = document.querySelector(".result--button");
+  let modalClose = document.querySelector(".modal-close");
+  let modalBg = document.querySelector(".modal-bg");
+  let playerName = document.querySelector("name");
+  let scoreSystem = document.querySelector(".score-system");
+  let s1 = document.querySelector("#s1");
+  let s2 = document.querySelector("#s2");
+  let s3 = document.querySelector("#s3");
+  let textBox = document.querySelector("#text-box");
+  let highScoreButton = document.querySelector("#hs-button");
+  let newHighScore = document.querySelector("#high--scores");
+  let timerLeft = 0;
+  let whacks = 0;
+  // let player1 = 0
+  // let player2 = 0
+  let whackIncrm = document.querySelector(".clicks");
+  whackIncrm.innerHTML = `Whacks: ${whacks}`;
+  let scoreBoard1 = 0;
+  let scoreBoard2 = 0;
+  let scoreBoard3 = 0;
 
-        })
-            
+  window.setInterval(function () {
+    if (timerLeft <= 0) {
+      clearInterval((timerLeft = 0));
+    }
+    timer.innerHTML = "Timer: " + timerLeft;
+    if (timerLeft > 0) {
+      timerLeft -= 1;
+    }
+  }, 1000);
 
-            //countdown function
-                const countdown = () => {
-                    const start = () => {
-                        start()  
-                    }
-                setInterval(() => {
-                    if(timerLeft <= 0){
-                        clearInterval(timerLeft = 0)
-                    }
-                    timer.innerHTML = 'Timer: ' + timerLeft
-                    timerLeft -=1
-                }, 1000);
-            }
+  const timeout = () => {
+    turnRed(getRandomDiv());
+    // setTimeout(turnBurlywood, 10000)
+    // div.style.backgroundColor ='burlywood'
+  };
 
-        
-            const timeout = () => {
-                turnRed(getRandomDiv())
-            }
-            //turnRed is the the function th
-            const getRandomDiv = () => {
-                let randNum = (Math.floor(Math.random() * 9)).toString() 
-                return document.getElementById(randNum)
-                //to get image set background image? try it
-            }
-                
-            //not every 3 secs but after 3 secs; 1 at a time
-            //div parameter is.....(answer here: )
-            const turnRed = (div) => {
-                div.style.backgroundImage = "url('./Assets/new-mole3.jpg')";
-                div.style.backgroundPosition = 'center'
-                div.style.backgroundSize = 'cover'
-                setTimeout(turnBurlywood, 1000, div)
-              }
-        
-            //attempting to get whacks up by 1
-            const trackClicks = (event) => {
+  const getRandomDiv = () => {
+    let randNum = Math.floor(Math.random() * 9).toString();
+    return document.getElementById(randNum);
+  };
 
-            if(event.target.style[4] === 'background-image'){
-                whacks++
-                whackIncrm.innerHTML = ` ${whacks}`
-                }
-            }
-            //conditional to see if image is there, then count++
-            
-            
-            const clearBoard = () => {
-                if(timerLeft = 0){   
-                }
-                
-            }
-        
-            //randnum=1-8 divs, keeping track using randNum
-            //
-            const turnBurlywood = (div) => {
-                div.style.backgroundImage = ''
-                div.style.backgroundColor ='burlywood'
-                timeout()
-            }
-        
-            const resetButton = () => {
-                // clearInterval(timerLeft = 0)
-                // div.style.backgroundColor = 'burlywood
-                //whacks = 0
-                // timerLeft = 30
-                // console.log(whacks)
-                // timerLeft = 30
-                // whacks = 0
-                // whackIncrm = document.querySelector('.whacked')
-                // whackIncrm.innerHTML = ` ${whacks}` 
-                // window.location.reload()
-            }
-        
-        
-            resultsButton.addEventListener('click', function(){
-                modalBg.classList.add('bg-active')
-        
-            // event listeners
-        
-             // event listener for start button
-            start.addEventListener('click', (event) =>{
-                timeout(event)
-                countdown(event)
-                start.style.display = 'none'//look up docs
-                //console.log(start)
-            })
-        clicks.forEach(each => each.addEventListener('click', trackClicks))
-        reset.addEventListener('click', resetButton)
+  //not every 3 secs but after 3 secs; 1 at a time
+  //div parameter is.....(answer here: )
+  const turnRed = (div) => {
+    if (timerLeft > 0) {
+      div.style.backgroundImage = "url('./Assets/new-mole3.jpg')";
+      div.style.backgroundPosition = "center";
+      div.style.backgroundSize = "cover";
+      setTimeout(turnBurlywood, 600, div);
+    } else {
+      start.style.display = "block";
+      if (whacks > scoreBoard1) {
+        scoreBoard3 = scoreBoard2; //reassigns highest scores
+        scoreBoard2 = scoreBoard1;
+        scoreBoard1 = whacks;
+        s1.innerHTML = `1. ${scoreBoard1}`;
+        s2.innerHTML = `2. ${scoreBoard2}`;
+        s3.innerHTML = `3. ${scoreBoard3}`;
+      } else if (whacks > scoreBoard2) {
+        scoreBoard3 = scoreBoard2; //whacks second highest score it takes that place
+        scoreBoard2 = whacks;
+        s1.innerHTML = `1. ${scoreBoard1}`;
+        s2.innerHTML = `2. ${scoreBoard2}`;
+        s3.innerHTML = `3. ${scoreBoard3}`;
+      } else if (whacks > scoreBoard3) {
+        scoreBoard3 = whacks;
+        s1.innerHTML = `1. ${scoreBoard1}`;
+        s2.innerHTML = `2. ${scoreBoard2}`;
+        s3.innerHTML = `3. ${scoreBoard3}`;
+      }
+      whacks = 0;
+      timerLeft = 0;
+    }
+  };
 
-        
-        
-        
-        
-            //mole randomly appearing
-            // setTimeout(() => {
-               // document.getElementById('surprise--mole').style.display = 'block';
-               // }, 2000);
-        
-               // setTimeout(() => {
-               //     document.getElementById('surprise--mole').style.display = 'none';
-               //     }, 3000);
-        
-                
-        
-               // event listeners for pockets
-            clicks.forEach(each => each.addEventListener('click', trackClicks))
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                    //=============================================================
-                    //This was me attempting to get my divs to randomly get a color
-                    //=============================================================
-                    // const changeColor = () => {
-                        //     let newColor = makeColor()
-                        //     let circles = document.getElementsByClassName('.pocket')
-                        //     // document.getElementsByClassName('.rgb').innerHTML = newColor
-                        // }
-                
-                        // const makeColor = () => {
-                            //     let arr = []
-                            //     for(let i = 0; i < 9; i++){
-                                //         let num = Math.floor(Math.random() * 8)
-                                //         arr.push(num)
-                                //     }
-                                // }
-                                //let start = document.querySelector('.start').addEventListener('click', changeColor())
-                                //let pocket = document.getElementById('2').addEventListener('click', pocketClick 
-                    // eventListener for reset button
-                    reset.addEventListener('click', resetButton)
-                }) 
-                
+  //attempting to get whacks up by 1
+  const trackClicks = (event) => {
+    if (event.target.style[4] === "background-image") {
+      whacks++;
+      whackIncrm.innerHTML = `Whacks: ${whacks}`;
+    }
+  };
+  //conditional to see if image is there, then count++
 
+  // const addToLeaderBoard = () => {
+  // scoreBoard.push({playerName: playerName.innerHTML, score: whacks})
+  //
 
+  //randnum=1-8 divs, keeping track using randNum
+  //
+  const turnBurlywood = (div) => {
+    div.style.backgroundImage = "";
+    // div.style.backgroundImage = 'none'
+    div.style.backgroundColor = "burlywood";
+    timeout();
+  };
 
+  const resetButton = () => {
+    window.location.reload();
+  };
 
+  // event listeners
 
+  // event listener for start button
+  start.addEventListener("click", (event) => {
+    timerLeft = 30;
+    timeout(event);
+    // countdown(event)
+    start.style.display = "none"; //look up docs
+  });
 
+  clicks.forEach((each) => each.addEventListener("click", trackClicks));
+  reset.addEventListener("click", resetButton);
 
+  // event listeners for pockets
+  clicks.forEach((each) => each.addEventListener("click", trackClicks));
+  clicks.forEach((each) => each.addEventListener);
 
+  resultsButton.addEventListener("click", function () {
+    modalBg.classList.add("bg-active");
+  });
 
+  modalClose.addEventListener("click", function () {
+    modalBg.classList.remove("bg-active");
+  });
 
+  // eventListener for reset button
+  reset.addEventListener("click", resetButton);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  highScoreButton.addEventListener("click", (event) => {
+    let name = textBox.value;
+    event.preventDefault();
+    newHighScore.innerHTML = `Great job ${name}! You got ${scoreBoard1} whacks`;
+  });
+});
