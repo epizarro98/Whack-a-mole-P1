@@ -7,15 +7,19 @@
 //make reset button that resets everything
 //style better
 //add mole image instead of red dot
+//make top score conditional
+//figure out modal
+//style better
+
 
 
                                        
-                                        
+//here is where I grab all my elements from HTML to use in the app.js
 document.addEventListener("DOMContentLoaded", () => {
   const start = document.querySelector(".start");
   const timer = document.querySelector(".timer");
   const reset = document.querySelector(".reset");
-  let clicks = document.querySelectorAll(".pocket"); //turns into an array; use for loop to iterate through the array
+  let clicks = document.querySelectorAll(".pocket");
   let resultsButton = document.querySelector(".result--button");
   let modalClose = document.querySelector(".modal-close");
   let modalBg = document.querySelector(".modal-bg");
@@ -29,14 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let newHighScore = document.querySelector("#high--scores");
   let timerLeft = 0;
   let whacks = 0;
-  // let player1 = 0
-  // let player2 = 0
   let whackIncrm = document.querySelector(".clicks");
   whackIncrm.innerHTML = `Whacks: ${whacks}`;
   let scoreBoard1 = 0;
   let scoreBoard2 = 0;
   let scoreBoard3 = 0;
 
+  //Countdown timer being used here
   window.setInterval(function () {
     if (timerLeft <= 0) {
       clearInterval((timerLeft = 0));
@@ -47,19 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 1000);
 
+  //This function is calling the turnRed function which essentially switches the cirle from being burlywood to the image, then calls math.random to randomize the moles over the board
   const timeout = () => {
     turnRed(getRandomDiv());
-    // setTimeout(turnBurlywood, 10000)
-    // div.style.backgroundColor ='burlywood'
   };
 
+  //This function randomizes my divs using math.random
   const getRandomDiv = () => {
     let randNum = Math.floor(Math.random() * 9).toString();
-    return document.getElementById(randNum);
+    return document.getElementById(randNum);//randnum=1-8 divs, keeping track using randNum
   };
 
-  //not every 3 secs but after 3 secs; 1 at a time
-  //div parameter is.....(answer here: )
+  //This function is whats making the mole pop in and out of each hole. Using the set timeout to bring the color back to its original color after about half a second.Then making the image re-appear using the display to block. Then my winning condition
   const turnRed = (div) => {
     if (timerLeft > 0) {
       div.style.backgroundImage = "url('./Assets/new-mole3.jpg')";
@@ -82,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         s2.innerHTML = `2. ${scoreBoard2}`;
         s3.innerHTML = `3. ${scoreBoard3}`;
       } else if (whacks > scoreBoard3) {
-        scoreBoard3 = whacks;
+        scoreBoard3 = whacks;//the third just stays third
         s1.innerHTML = `1. ${scoreBoard1}`;
         s2.innerHTML = `2. ${scoreBoard2}`;
         s3.innerHTML = `3. ${scoreBoard3}`;
@@ -92,21 +94,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  //attempting to get whacks up by 1
+  //This function increments the whacks up by one only if the image is inside of the hole
   const trackClicks = (event) => {
     if (event.target.style[4] === "background-image") {
       whacks++;
       whackIncrm.innerHTML = `Whacks: ${whacks}`;
     }
   };
-  //conditional to see if image is there, then count++
 
-  // const addToLeaderBoard = () => {
-  // scoreBoard.push({playerName: playerName.innerHTML, score: whacks})
-  //
-
-  //randnum=1-8 divs, keeping track using randNum
-  //
+ 
+  //This function turns the mole back to its original color, then calls timeout to run the code again
   const turnBurlywood = (div) => {
     div.style.backgroundImage = "";
     // div.style.backgroundImage = 'none'
@@ -114,18 +111,17 @@ document.addEventListener("DOMContentLoaded", () => {
     timeout();
   };
 
+  //I know this method is not recommended but did it for lack time purposes and this works
   const resetButton = () => {
     window.location.reload();
   };
-
-  // event listeners
 
   // event listener for start button
   start.addEventListener("click", (event) => {
     timerLeft = 30;
     timeout(event);
     // countdown(event)
-    start.style.display = "none"; //look up docs
+    start.style.display = "none"; 
   });
 
   clicks.forEach((each) => each.addEventListener("click", trackClicks));
@@ -135,20 +131,23 @@ document.addEventListener("DOMContentLoaded", () => {
   clicks.forEach((each) => each.addEventListener("click", trackClicks));
   clicks.forEach((each) => each.addEventListener);
 
+  //event listener to open pop up modal, made a new class for the pop up window
   resultsButton.addEventListener("click", function () {
     modalBg.classList.add("bg-active");
   });
-
+  //event listener that removes pop up box after the X is clicked
   modalClose.addEventListener("click", function () {
     modalBg.classList.remove("bg-active");
   });
 
-  // eventListener for reset button
+  //eventListener for reset button XD
   reset.addEventListener("click", resetButton);
 
+  //Event listener for the input field to put your name in, and submit button
   highScoreButton.addEventListener("click", (event) => {
     let name = textBox.value;
     event.preventDefault();
     newHighScore.innerHTML = `Great job ${name}! You got ${scoreBoard1} whacks`;
   });
+
 });
