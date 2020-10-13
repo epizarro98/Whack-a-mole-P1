@@ -10,9 +10,6 @@
 //make top score conditional
 //figure out modal
 //style better
-
-
-
                                        
 //here is where I grab all my elements from HTML to use in the app.js
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let resultsButton = document.querySelector(".result--button");
   let modalClose = document.querySelector(".modal-close");
   let modalBg = document.querySelector(".modal-bg");
-  let playerName = document.querySelector("name");
-  let scoreSystem = document.querySelector(".score-system");
+  let playerName = document.querySelector("name"); // delete if not using
+  let scoreSystem = document.querySelector(".score-system"); // delete if not using
   let s1 = document.querySelector("#s1");
   let s2 = document.querySelector("#s2");
   let s3 = document.querySelector("#s3");
@@ -40,7 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let scoreBoard3 = 0;
 
   //Countdown timer being used here
+  // This is a super hacky way of doing things. It works! 
+  // So props for that, but I'd love to see something that 
+  // isn't constantly running in the background unecessarily. 
+  // Instead, set an interval inside of start event listener,
+  // and clear it once timerLeft=0. Ask for help on how to
+  // do this if you're not sure!
   window.setInterval(function () {
+    console.log("Timer Left:", timerLeft)
     if (timerLeft <= 0) {
       clearInterval((timerLeft = 0));
     }
@@ -51,23 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 1000);
 
   //This function is calling the turnRed function which essentially switches the cirle from being burlywood to the image, then calls math.random to randomize the moles over the board
-  const timeout = () => {
-    turnRed(getRandomDiv());
-  };
+  // const timeout = () => {
+  //   turnRed(getRandomDiv());
+  // };
 
-  //This function randomizes my divs using math.random
+  // This function randomizes my divs using math.random
+  // The above sentence could be more clear with something like: "returns a randomly selected div"
+  // I would rename this to getRandomHole, to get even more specific
   const getRandomDiv = () => {
     let randNum = Math.floor(Math.random() * 9).toString();
     return document.getElementById(randNum);//randnum=1-8 divs, keeping track using randNum
   };
 
   //This function is whats making the mole pop in and out of each hole. Using the set timeout to bring the color back to its original color after about half a second.Then making the image re-appear using the display to block. Then my winning condition
+  // I would rename this to makeMoleAppear or something like that
   const turnRed = (div) => {
     if (timerLeft > 0) {
       div.style.backgroundImage = "url('./Assets/new-mole3.jpg')";
       div.style.backgroundPosition = "center";
       div.style.backgroundSize = "cover";
-      setTimeout(turnBurlywood, 600, div);
+      setTimeout(turnBurlywood, 600, div); // make sure you can explain what the third argument is doing here
     } else {
       start.style.display = "block";
       if (whacks > scoreBoard1) {
@@ -108,10 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
     div.style.backgroundImage = "";
     // div.style.backgroundImage = 'none'
     div.style.backgroundColor = "burlywood";
-    timeout();
+    // timeout(); // replacing this with turnRed(getRandomDiv())
+    turnRed(getRandomDiv())
   };
 
   //I know this method is not recommended but did it for lack time purposes and this works
+  // need to manually reset the game
   const resetButton = () => {
     window.location.reload();
   };
@@ -119,17 +128,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // event listener for start button
   start.addEventListener("click", (event) => {
     timerLeft = 30;
-    timeout(event);
-    // countdown(event)
+    // timeout(event); 
+    // looks like the line above is just running turnRed(getRandomDiv())
+    // and doesnt even use the event object that is being passed into it
+    // so I'm replacing it with the code it's actually running
+    turnRed(getRandomDiv()); // this is replacing timeout(event)
+    // countdown(event) // get rid of this since you're not using it?
     start.style.display = "none"; 
   });
-
   clicks.forEach((each) => each.addEventListener("click", trackClicks));
   reset.addEventListener("click", resetButton);
-
-  // event listeners for pockets
-  clicks.forEach((each) => each.addEventListener("click", trackClicks));
-  clicks.forEach((each) => each.addEventListener);
+  // event listeners for pockets // you already add the event listeners for the holes above
+  // clicks.forEach((each) => each.addEventListener("click", trackClicks));
+  // clicks.forEach((each) => each.addEventListener);
 
   //event listener to open pop up modal, made a new class for the pop up window
   resultsButton.addEventListener("click", function () {

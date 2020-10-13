@@ -13,10 +13,10 @@ You have 30 seconds to try and whack as many moles as you can, while the moles a
 * CSS
 * JavaScript 
 
-#### Credits:
-    https://www.youtube.com/watch?v=KjQ8uvAt9kQ
-    https://fdossena.com/?p=html5cool/buttons/i.frag
-    https://www.w3schools.com/jsref/jsref_random.asp
+#### Resources Consulted:
+   * https://www.youtube.com/watch?v=KjQ8uvAt9kQ
+   * https://fdossena.com/?p=html5cool/buttons/i.frag
+   * https://www.w3schools.com/jsref/jsref_random.asp
 
 Color Pallet:
 
@@ -33,25 +33,23 @@ Also, to track how many times I whacked the moles to get a high score.
 
 #### Development Plan 
 
-description of your development plan 
-
-* Development Plan 1: Get gameboard issued
-* Development Plan 2: Make moles appear
-* Development Plan 3: Add a conditional to see who has the highest score
-* Development Plan 4: Style my game
+* Get gameboard issued
+* Make moles appear
+* Add a conditional to see who has the highest score
+* Style my game
 
 #### MVP
 
-* MVP ONE: Display gameboard
-* MVP Two: Make moles appear
-* MVP Three: Winning conditional
-* MVP Four: Style the game
+* Display gameboard
+* Make moles appear
+* Handle gameover condition/scoring
+* Style the game
 
 #### Stretch goals
 
-* Stretch goals ONE: Adding noise everytime the moles got whacked
-* Stretch goals Two: Adding a hammer as a cursor
+* Play a noise each time a mole is whacked
+* Add a hammer as the cursor
 
 ## Challenges:
 
-Some challenges were making the modal to pop up and style the entire game. Making the winning conditionals was also a challenge. 
+I had some challenges were making the modal pop up and styling the entire game in general. Handling the gameover condition and score-tracking was also a challenge.
