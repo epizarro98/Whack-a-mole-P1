@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whack-a-mole</title>
     <link rel="stylesheet" href="style.css">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="42" height="42">...
 </head>
 <body>
+    <div class="flex">
     <img src='https://cdna.artstation.com/p/assets/images/images/004/089/948/medium/mikel-ramos-mole-01.jpg?1480267515' id='surprise--mole' style='display: none'/>
     <div class='section'>       
         <div class='clicks'>Whacks:<span class='whacked'></span></div>
         <div class='start' id='start--game'><button class='style--button'>Start Game</button></div>
         <div class='timer'>Timer: 30</div>
-        <div class='reset'><button class='style--reset' onclick="resetButton()">Reset</button></div>
+        <div class='reset'><button class='style--reset'>Reset</button></div>
     </div>
     <div class='container'>
         <div class='start1'><h1>Whack-<span>a</span>-mole!</h1></div>
@@ -32,23 +34,21 @@
     <button class='result--button'>Results</button>
 </div>
 
-<!-- <div class="score-system">
-    <div class="player1">Player 1: </div>
-    <div class="player">Player 2: </div>
-</div> -->
-
 <div class='modal-bg'>
     <div class='modal'>
-        <h2 id="high--scores">Top Scores</h2>
+        <h2 id="high--scores">Leaderboard</h2>
         <h3 id="s1">1. </h3>
         <h3 id="s2">2. </h3>
         <h3 id="s3">3. </h3>
+    <form id='form' autocomplete="off">
         <label class='name'>Name: </label>
         <input type='text' name='name' id='text-box'>
-        <button id="hs-button">Submit</button>
+        <button id='submit-button' type='submit'>Submit</button>
+    </form>
         <span class="modal-close">X</span>
         </div>
     </div>
     <script src="app.js"></script>
+</div>
 </body>
 </html>

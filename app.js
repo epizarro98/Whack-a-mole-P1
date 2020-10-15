@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let s1 = document.querySelector("#s1");
   let s2 = document.querySelector("#s2");
   let s3 = document.querySelector("#s3");
-  let textBox = document.querySelector("#text-box");
+  let textBox = document.getElementById("text-box");
   let highScoreButton = document.querySelector("#hs-button");
   let newHighScore = document.querySelector("#high--scores");
   let timerLeft = 0;
@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let scoreBoard1 = 0;
   let scoreBoard2 = 0;
   let scoreBoard3 = 0;
+  const form = document.getElementById('form');
+  let hs1 = 0;
+  let hs2 = 0;
+  let hs3 = 0;  
 
   //Countdown timer being used here
   window.setInterval(function () {
@@ -70,26 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(turnBurlywood, 600, div);
     } else {
       start.style.display = "block";
-      if (whacks > scoreBoard1) {
-        scoreBoard3 = scoreBoard2; //reassigns highest scores
-        scoreBoard2 = scoreBoard1;
-        scoreBoard1 = whacks;
-        s1.innerHTML = `1. ${scoreBoard1}`;
-        s2.innerHTML = `2. ${scoreBoard2}`;
-        s3.innerHTML = `3. ${scoreBoard3}`;
-      } else if (whacks > scoreBoard2) {
-        scoreBoard3 = scoreBoard2; //whacks second highest score it takes that place
-        scoreBoard2 = whacks;
-        s1.innerHTML = `1. ${scoreBoard1}`;
-        s2.innerHTML = `2. ${scoreBoard2}`;
-        s3.innerHTML = `3. ${scoreBoard3}`;
-      } else if (whacks > scoreBoard3) {
-        scoreBoard3 = whacks;//the third just stays third
-        s1.innerHTML = `1. ${scoreBoard1}`;
-        s2.innerHTML = `2. ${scoreBoard2}`;
-        s3.innerHTML = `3. ${scoreBoard3}`;
-      }
-      whacks = 0;
       timerLeft = 0;
     }
   };
@@ -102,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
- 
   //This function turns the mole back to its original color, then calls timeout to run the code again
   const turnBurlywood = (div) => {
     div.style.backgroundImage = "";
@@ -111,9 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
     timeout();
   };
 
-  //I know this method is not recommended but did it for lack time purposes and this works
   const resetButton = () => {
-    window.location.reload();
+      whacks = 0
+      whackIncrm.innerHTML = `Whacks: ${whacks}`;
+      timerLeft = 0;
   };
 
   // event listener for start button
@@ -123,6 +107,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // countdown(event)
     start.style.display = "none"; 
   });
+
+  form.addEventListener('submit', function(event){
+    let name = textBox.value;
+
+    newHighScore.innerHTML = `Great job ${name}! You got ${whacks} whacks`;
+
+    if (whacks > hs1) {
+      hs1 = whacks;
+      // s1.innerHTML = `1. ${hs1} ${name}`;
+      s1.innerHTML = `1. ${name} ${hs1}`;
+    } else if (whacks > hs2) {
+      hs2 = whacks;
+      s2.innerHTML = `2. ${name} ${hs2}`;
+    } else if (whacks > hs3) {
+      hs3 = whacks;
+      s3.innerHTML = `3. ${name} ${hs3}`;
+    }
+
+    //resets input box to nothing
+    whacks = 0;
+    textBox.value = '';
+    event.preventDefault();
+  })
 
   clicks.forEach((each) => each.addEventListener("click", trackClicks));
   reset.addEventListener("click", resetButton);
@@ -142,12 +149,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //eventListener for reset button XD
   reset.addEventListener("click", resetButton);
-
-  //Event listener for the input field to put your name in, and submit button
-  highScoreButton.addEventListener("click", (event) => {
-    let name = textBox.value;
-    event.preventDefault();
-    newHighScore.innerHTML = `Great job ${name}! You got ${scoreBoard1} whacks`;
-  });
-
 });
