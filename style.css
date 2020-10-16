@@ -17,10 +17,9 @@ body {
     padding-bottom: 32%;
     background-color: burlywood;
     border-radius: 50%;
+    cursor: pointer;
 }
-.custom-cur {
-    cursor: url('/images/droplet.svg');
-  }
+
 
 h1 {
     text-align: center;
