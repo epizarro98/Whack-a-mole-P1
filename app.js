@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //This function turns the mole back to its original color, then calls timeout to run the code again
   const turnBurlywood = (div) => {
     div.style.backgroundImage = "";
-    // div.style.backgroundImage = 'none'
     div.style.backgroundColor = "burlywood";
     timeout();
   };
@@ -115,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (whacks > hs1) {
       hs1 = whacks;
-      // s1.innerHTML = `1. ${hs1} ${name}`;
       s1.innerHTML = `1. ${name} ${hs1}`;
     } else if (whacks > hs2) {
       hs2 = whacks;
